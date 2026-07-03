@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const PolicyLayout = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -49,5 +49,18 @@ export const Terms = () => (
     <p>Last updated: July 2026.</p>
   </PolicyLayout>
 );
+
+const legalPages: Record<string, React.FC> = {
+  '/shipping': Shipping,
+  '/returns': Returns,
+  '/privacy': Privacy,
+  '/terms': Terms,
+};
+
+export const LegalRouter = () => {
+  const { pathname } = useLocation();
+  const Page = legalPages[pathname] ?? Shipping;
+  return <Page />;
+};
 
 export default Shipping;

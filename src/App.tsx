@@ -20,17 +20,8 @@ const Cart = lazy(() => import("./pages/Cart"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 const Account = lazy(() => import("./pages/Account"));
-const Shipping = lazy(() =>
-  import("./pages/Legal").then((module) => ({ default: module.default }))
-);
-const Returns = lazy(() =>
-  import("./pages/Legal").then((module) => ({ default: module.Returns }))
-);
-const Privacy = lazy(() =>
-  import("./pages/Legal").then((module) => ({ default: module.Privacy }))
-);
-const Terms = lazy(() =>
-  import("./pages/Legal").then((module) => ({ default: module.Terms }))
+const LegalPage = lazy(() =>
+  import("./pages/Legal").then((module) => ({ default: module.LegalRouter }))
 );
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -59,10 +50,10 @@ const AppRoutes = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/shipping" element={<Shipping />} />
-          <Route path="/returns" element={<Returns />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
+          <Route path="/shipping" element={<LegalPage />} />
+          <Route path="/returns" element={<LegalPage />} />
+          <Route path="/privacy" element={<LegalPage />} />
+          <Route path="/terms" element={<LegalPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
