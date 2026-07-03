@@ -1,16 +1,13 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
     host: "::",
     port: 8080,
   },
   build: {
-    // Skips per-chunk gzip reporting — this step can hang on Vercel with many chunks.
     reportCompressedSize: false,
     chunkSizeWarningLimit: 600,
     rollupOptions: {
@@ -21,14 +18,10 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  plugins: [
-    react(),
-    mode === 'development' &&
-    componentTagger(),
-  ].filter(Boolean),
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+});
