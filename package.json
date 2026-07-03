@@ -3,12 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "engines": {
-    "node": "24.x"
-  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && exit 0",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
